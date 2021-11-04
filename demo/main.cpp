@@ -1,8 +1,9 @@
+//Copyright by Enigma
 #include "Check.h"
 #include "Time.h"
 
 int main() {
-  std::vector <long> size;
+  std::vector <int64_t> size;
 
   long i=1;
   while (i > 0 and i != 0){

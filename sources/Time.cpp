@@ -1,11 +1,11 @@
-
+//Copyright by Enigma
 
 #include "Time.h"
 
-Time::Time(Check_type t, std::vector<long>& sizes) {
+Time::Time(Check_type t, std::vector<int64_t>& sizes) {
   Time::type = t;
   int id = 0;
-  for (long i=log2(sizes[0]/2); pow(2, i) < 3*sizes[sizes.size()-1]/2; i++)
+  for (int64_t i=log2(sizes[0]/2); pow(2, i) < 3*sizes[sizes.size()-1]/2; i++)
   {
     id++;
     Check e(id, type, pow(2, i));

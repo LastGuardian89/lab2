@@ -1,6 +1,9 @@
+//Copyright by C++_developers1488
+
+#ifndef TEST_CPP_
+#define TEST_CPP_
 
 #include <gtest/gtest.h>
-
 #include "Check.h"
 #include "Time.h"
 
@@ -89,3 +92,5 @@ TEST(InvestigationTest, constructorTest) {
     FAIL() << e.what();
   }
 }
+
+#endif // TEST_CPP_

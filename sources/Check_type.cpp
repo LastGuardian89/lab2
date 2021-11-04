@@ -1,10 +1,8 @@
-#include "Check.h"
+//Copyright by Enigma
 
-#include <chrono>
-#include <random>
+#include "Check.h"
 #include <sstream>
 
-#include "Check.h"
 std::ostream & operator<<(std::ostream & os, Check_type const & type) {
   switch (type) {
     case _random:

@@ -1,3 +1,7 @@
+//Copyright by Enigma
+
+#ifndef INCLUDE_TIME_HPP_
+#define INCLUDE_TIME_HPP_
 
 #include <iostream>
 #include <random>
@@ -16,3 +20,6 @@ struct Time {
   std::vector<Check> experiments;
   Time(Check_type type, std::vector<long>& sizes);
 };
+
+
+#endif // INCLUDE_TIME_HPP_
