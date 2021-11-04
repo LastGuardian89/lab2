@@ -300,7 +300,7 @@ function(hunter_gate_download dir)
   if(no_make)
     set(make_arg "")
   else()
-    # Test case: remove Ninja from PATH but set it via CMAKE_MAKE_PROGRAM
+    # Check case: remove Ninja from PATH but set it via CMAKE_MAKE_PROGRAM
     set(make_arg "-DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}")
   endif()
 

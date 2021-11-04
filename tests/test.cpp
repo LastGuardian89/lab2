@@ -1,14 +1,32 @@
-// Copyright 2021 wm8
-#include "Investigation.h"
-#include "Experiment.h"
+
 #include <gtest/gtest.h>
 
+#include "Check.h"
+#include "Time.h"
+
+
+TEST(ExperimentTest, printTest)
+{
+  Check e(0, _reverse, 838860);
+  e.run();
+  std::stringstream ss;
+  e.print(ss);
+  std::string s("\t- experiment:\n"
+      "\t\tnumber: 0\n"
+      "\t\tinput_data:\n"
+      "\t\t\tbuffer_size: "+
+      Byte_value(e.size) +
+      "\n\t\tresults:\n"
+      "\t\t\tduration: "+ std::to_string(e.time) +" ms\n");
+  std::string s2 = ss.str();
+  ASSERT_EQ(s2, s);
+}
 TEST(ExperimentTest, forwardTest) {
   try {
-    Experiment e(0, forward, 80);
+    Check e(0, _random, 80);
     char* arr = e.initArray();
     char k;
-    e._forward(arr, k);
+    e._random(arr, k);
     delete[] arr;
     SUCCEED();
   }
@@ -19,10 +37,10 @@ TEST(ExperimentTest, forwardTest) {
 }
 TEST(ExperimentTest, reverseTest) {
   try {
-    Experiment e(0,forward, 80);
+    Check e(0, _random, 80);
     char* arr = e.initArray();
     char k=0;
-    e.reverse(arr, k);
+    e._forward(arr, k);
     delete[] arr;
     SUCCEED();
   }
@@ -33,10 +51,10 @@ TEST(ExperimentTest, reverseTest) {
 }
 TEST(ExperimentTest, randomTest) {
   try {
-    Experiment e(0, forward,  80);
+    Check e(0, _random,  80);
     char* arr = e.initArray();
     char k;
-    e.random(arr, k);
+    e._reverse(arr, k);
     delete[] arr;
     SUCCEED();
   }
@@ -48,7 +66,7 @@ TEST(ExperimentTest, randomTest) {
 TEST(ExperimentTest, runTest)
 {
   try {
-    Experiment e(0, _random, 838860);
+    Check e(0, _reverse, 838860);
     int result = e.run();
     if(result >= 0)
       SUCCEED() << result;
@@ -59,25 +77,11 @@ TEST(ExperimentTest, runTest)
     FAIL() << e.what();
   }
 }
-TEST(ExperimentTest, printTest)
-{
-  Experiment e(0, _random, 838860);
-  e.run();
-  std::stringstream ss;
-  e.print(ss);
-  std::string s("\t- experiment:\n"
-      "\t\tnumber: 0\n"
-      "\t\tinput_data:\n"
-      "\t\t\tbuffer_size: "+ sizeConvertor(e.size) +
-      "\n\t\tresults:\n"
-      "\t\t\tduration: "+ std::to_string(e.time) +" ms\n");
-  std::string s2 = ss.str();
-  ASSERT_EQ(s2, s);
-}
+
 TEST(InvestigationTest, constructorTest) {
   try {
-    std::vector<int64_t> size = {838860, 1677721, 3355443};
-    Investigation i(_random, size);
+    std::vector<long> size = {838860, 1677721, 3355443};
+    Time i(_reverse, size);
     SUCCEED();
   }
   catch (std::runtime_error const & e)

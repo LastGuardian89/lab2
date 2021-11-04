@@ -1,18 +1,16 @@
-// Copyright (c) 2021. wm8
+#include "Check.h"
+#include "Time.h"
 
-#include "Investigation.h"
-#include "Experiment.h"
 int main() {
-  std::vector<int64_t> size;
+  std::vector <long> size;
 
-  int64_t i=1;
-  while (i > 0)
-  {
-    std::cout << "Enter size in bytes (for end enter 0): ";
+  long i=1;
+  while (i > 0 and i != 0){
+    std::cout << "Укажите размер буфера: ";
     std::cin >> i;
-    if(i>0)
+    if(i>0 and i != 0)
       size.push_back(i);
   }
-  Investigation inv(_random, size);
+  Time inv(_reverse, size);
   inv.print(std::cout);
 }

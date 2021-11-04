@@ -230,7 +230,7 @@ bld/
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 
-# MSTest test Results
+# MSTest _reverse Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
@@ -282,7 +282,7 @@ StyleCopReport.xml
 *.svclog
 *.scc
 
-# Chutzpah Test files
+# Chutzpah Check files
 _Chutzpah*
 
 # Visual C++ cache files
